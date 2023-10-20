@@ -1,0 +1,6 @@
+2001: "9/11",
+  1914: "Start of WW1",
+  1918: "End of WW1",
+  1939: "Start of WW2",
+  1945: "End of WW2",
+  1889: "Birth of Hitler",

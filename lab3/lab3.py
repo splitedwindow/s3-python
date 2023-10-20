@@ -68,8 +68,8 @@ class BookAssembler:
 
 # Створення об'єкта книги наукового типу
 scientific_builder = ScientificBookBuilder()
-director = BookAssembler(scientific_builder)
-director.construct()
+assembler = BookAssembler(scientific_builder)
+assembler.construct()
 scientific_book = scientific_builder.get_book()
 
 # Створення об'єкта книги роману
@@ -92,4 +92,4 @@ scientific_book.add_page({"id": page2_id, "content": "Зміст сторінк�
 
 print(scientific_book.__dict__)
 print(novel_book.__dict__)
-print(manual_book.__dict__)
+print(manual_book.__dict__) 
