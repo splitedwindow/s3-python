@@ -14,6 +14,7 @@ class Table():
     self.order_in_time = False
     self.price = 0
     self.is_payed = False
+    self.is_reserved = False
 
   # table is being taken by the customers
   def customers_arrive(self):

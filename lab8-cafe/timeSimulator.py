@@ -12,6 +12,7 @@ class TimeSimulator():
     self.opening_time = opening_time
     self.closing_time = closing_time
     self.current_time = opening_time
+    self.current_minutes = 0
 
     # accelerates time in time_accelerator times
     self.time_accelerator = time_accelerator
@@ -29,7 +30,16 @@ class TimeSimulator():
     while True:
       print(f"Time: {self.current_time}:00")
       # increasing speed of one hour passing
-      time.sleep(3600 / self.time_accelerator)
+      self.current_minutes = 0
+      for i in range(59):
+        time.sleep(60/self.time_accelerator)
+        self.current_minutes += 1
+        if(self.current_minutes < 10):
+          add_zero = '0' + str(self.current_minutes)
+          print(f"Time: {self.current_time}:{add_zero}")
+        else:
+          print(f"Time: {self.current_time}:{self.current_minutes}")
+          pass
       if self.current_time < 21:
         self.current_time += 1
         self.define_peek_hours()

@@ -114,6 +114,9 @@ class Waiter():
     current_Table.order_arrives()
     # customers left before order arrived
     if current_Table.is_busy == False:
+      # if table was reserved make it not reserved
+      if current_Table.is_reserved == True:
+        current_Table.is_reserved = False
       self.throw_dish_away()
     else:
       # putting dishes on the table
