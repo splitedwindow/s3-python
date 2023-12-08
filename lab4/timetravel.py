@@ -2,9 +2,7 @@ import pprint
 
 TravelList = [(2001, "9/11"), (1914, "Start of WW1"), (1918, "End of WW1"), (1939, "Start of WW2"), (1945, "End of WW2"), (1889, "Birth of Hitler")]
 
-TravelDictionary = {
-
-}
+TravelDictionary = dict(TravelList)
 
 while True:
   print("Here are years you can visit:")
@@ -17,7 +15,7 @@ while True:
     break
 
   # User changes years
-  if getAnswer == 'change':
+  elif getAnswer == 'change':
     addOrDelete = input("Enter 'add' or 'delete' > ")
     while addOrDelete != 'add' and addOrDelete != 'delete':
       addOrDelete = input('Try again.')
@@ -43,10 +41,14 @@ while True:
   else:
     try:
       getAnswer = int(getAnswer)
-      print(getAnswer, type(getAnswer))
-      print("You traveled in year ", getAnswer, " and visited ", TravelDictionary[getAnswer])
+      if getAnswer in TravelDictionary:
+        print("You traveled in year ", getAnswer, " and visited ", TravelDictionary[getAnswer])
+
     except ValueError:
-      print("Error. Wrong input number")
+      print("Error. Wrong input")
+
+
+    
     
 
 
