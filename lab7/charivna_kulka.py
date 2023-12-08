@@ -1,6 +1,7 @@
 import random
 import time
 import sys
+import pytest
 
 answers = ["Yes", "No", "Maybe"]
 count_of_answers = len(answers)
@@ -57,6 +58,8 @@ def get_random_answer():
 
 # Check string for wrong input
 def question_validation(question):
+    if isinstance(question, int):
+        return False
     length = len(question)
     if length < 10:
         return False
@@ -85,42 +88,19 @@ def question_validation(question):
 
     return True
 
+# tests
+
 def charivna_kulka(question):
     # If the question has not been approved by the additional function
     if not question_validation(question):
         printt("Question is invalid, unable to answer.")
-        return
+        return 'Invalid input'
 
     # If the question is legit
     answer = get_random_answer()
     printt('\nAnswer is: ' + answer)
+    return answer
 
-while True:
-    printt("\nMenu:\n1. To change probabilities\n2. To Ask a question\n3. Add a new answer\n4. Exit\n")
-    printt("Enter your choice (1/2/3/4): ")
-    choice = input()
-
-    if choice == '1':
-        # Option to change probabilities
-        custom_distribution()
-
-    elif choice == '2':
-        # Option to ask a question
-        question = input("Ask a question: ")
-        charivna_kulka(question)
-
-    elif choice == '3':
-        # Option to add a new question
-        new_answer = input("Enter a new answer: ")
-        answers.append(new_answer)
-        even_probabilities_distribution()
-        printt("New answer added. Chances updated.")
-
-    elif choice == '4':
-        # Exit the program
-        break
-
-    else:
-        printt("Invalid choice. Please select a valid option (1/2/3/4).")
+charivna_kulka('Is this question hard to answer?')
 
 
