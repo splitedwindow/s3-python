@@ -1,16 +1,27 @@
-import csv
+import sys
 
 file = open('./database.csv')
-csvReader = csv.reader(file)
 
 # headers from the file
-header = []
-header = next(csvReader)
+lines = file.readlines()
+header_line = lines[0]
+header = header_line.split(',')
+# erase '\n' from the last element
+header[len(header) - 1] = header[len(header) - 1].strip()
+
+
+cars = []
+index = 1
+for line in lines:
+  if index == 1:
+    index += 1
+  else:
+    line_dict = line.split(',')
+    line_dict[len(line_dict) - 1] = line_dict[len(line_dict) - 1].strip()
+    cars.append(line_dict)
+
 
 # read all the cars
-cars = []
-for car in csvReader:
-  cars.append(car)
 
 
 while True:
@@ -108,17 +119,22 @@ while True:
             newFieldData = input("Enter new field data > ")
             cars[carToChange-1][fieldToChange-1] = newFieldData
 
-            fileToSave = [header] + cars
+            fileToSave_dict = [header] + cars
+            fileToSave = ''
+            for line in fileToSave_dict:
+              text_line = ''
+              for word in line:
+                text_line += word + ','
+              
+              text_line = text_line[:-1]
+              text_line = text_line + '\n'
+
+              fileToSave += text_line
 
             print(fileToSave)
-            
-            with open('database.csv', 'w', newline='') as csvfile:
-              csv_writer = csv.writer(csvfile)
 
-              # Write each row in the file
-              for row in fileToSave:
-                print(row)
-                csv_writer.writerow(row)
+            with open('database.csv', 'w', newline='') as file_change_and_save:
+              file_change_and_save.write(fileToSave)
 
         except ValueError:
           print("Wrong input")
@@ -140,17 +156,22 @@ while True:
         print("Wrong input")
       else:
         del cars[carToDelete-1]
-        fileToSave = [header] + cars
+        fileToSave_dict = [header] + cars
+        fileToSave = ''
+        for line in fileToSave_dict:
+          text_line = ''
+          for word in line:
+            text_line += word + ','
+          
+          text_line = text_line[:-1]
+          text_line = text_line + '\n'
+
+          fileToSave += text_line
 
         print(fileToSave)
-        
-        with open('database.csv', 'w', newline='') as csvfile:
-          csv_writer = csv.writer(csvfile)
 
-          # Write each row in the file
-          for row in fileToSave:
-            print(row)
-            csv_writer.writerow(row)
+        with open('database.csv', 'w', newline='') as file_change_and_save:
+          file_change_and_save.write(fileToSave)
 
     except ValueError:
       print("Wrong input")
