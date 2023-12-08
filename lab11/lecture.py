@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 
-driver = webdriver.Chrome(service=Service(executable_path="C:/Users/romanmisisin/Downloads/chromedriver_win32/chromedriver.exe"))
+driver = webdriver.Chrome("C:/Users/romanmisisin/Downloads/chromedriver_win32/chromedriver.exe")
 # driver = webdriver.Chrome("/Users/romanmisisin/Downloads/chrome-mac-arm64/Google\ Chrome\ for\ Testing.app")
 
 format_link = lambda y, m, d: f"https://varta1.com.ua/archive/{y}-{m}-{d}/"

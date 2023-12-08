@@ -30,7 +30,8 @@ while True:
   print("2. Search for car by criteria.")
   print("3. Change one of the fields.")
   print("4. Delete car form the database.")
-  print("5. Exit.")
+  print("5. Average year of the mark") # additional points
+  print("6. Exit.")
   answer = input(" > ")
 
   if answer == '1':
@@ -179,6 +180,30 @@ while True:
     print("\n\n")
 
   elif answer == '5':
+    print("Enter car brand to get the average year > ")
+    car_brand = input()
+
+    car_brand_exists = False
+    for car in cars:
+      if car[0] == car_brand:
+        car_brand_exists = True
+    
+    if not car_brand_exists:
+      print("Car brand doesn't exist.")
+    else:
+      sum_of_years = 0
+      years_of_chosen_brand = []
+      for car in cars:
+        if car[0] == car_brand:
+          years_of_chosen_brand.append(int(car[2]))
+          sum_of_years += int(car[2])
+
+      average_year = sum_of_years/len(years_of_chosen_brand)
+
+      print(f"Average year of {car_brand} is {average_year}")
+      
+      
+  elif answer == '6':
     exit()
   else:
     print("Wrong input")
@@ -191,5 +216,5 @@ Koenigsegg,Jesko,2022,White
 Lexus,LFA,2012,Black
 Hummer,H1,2022,Grey
 Porsche,911 GT3 RS,2023,Grey
-Porsche,718 Cayman GT4,2023,Yellow
+Porsche,718 Cayman GT4,2021,Yellow
 """
