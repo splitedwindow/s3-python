@@ -96,7 +96,7 @@ def delete_task(Todolist):
     try:
       task_index = int(input("Choose task by number > "))
       task_index -= 1
-      TodoList.delete_task(task_index)
+      Todolist.delete_task(task_index)
     except ValueError:
       print(f"Wrong input")
       
