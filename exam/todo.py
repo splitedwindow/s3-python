@@ -44,15 +44,13 @@ def add_task(Todolist):
   name = input('Enter name of the task > ')
   # empty string handle
   while name.strip() == '':
-    print('Wrong input, try again > ')
-    name = input()
+    name = input('Wrong input, try again > ')
   
   print('Enter description of the task.\n\t > ')
   description = input()
   # empty string handle
   while description.strip() == '':
-    print('Wrong input, try again > ')
-    description = input()
+    description = input('Wrong input, try again > ')
   
   print('Choose priority of the task by number:')
   output_numbering = 1
@@ -139,8 +137,8 @@ def chagne_task(Todolist):
       current_task = Todolist.todos[change_task_index]
       new_data = input("Enter new name > ")
       while new_data.strip() == '':
-        print("Wrong input, try again")
-        new_data = input(" > ")
+        print()
+        new_data = input("Wrong input, try again > ")
       current_task[field_name] = new_data
 
       print("Task has been changed")
